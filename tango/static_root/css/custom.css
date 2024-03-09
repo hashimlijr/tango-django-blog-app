@@ -1,0 +1,12 @@
+/* your styles go here */
+
+a.update-link, a.delete-link {
+    color: #82bce3; /* Set the color to a desired value */
+    text-decoration: none; /* Remove the default underline */
+    font-weight: bold; /* Make the text bold */
+  }
+
+/* Hover effect for the links */
+a.update-link:hover, a.delete-link:hover {
+    color: #dc5757; /* Change color on hover */
+}
