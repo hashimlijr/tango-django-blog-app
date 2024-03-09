@@ -1,0 +1,81 @@
+{% extends "account/auth_base.html" %}
+{% load static %}
+{% comment %} {% load socialaccount %} {% endcomment %}
+
+{% block content %}
+				<div class="col-xl-6 col-lg-7 col-sm-12 col-12 fxt-bg-color">
+					<div class="fxt-content">
+						<div class="fxt-header">
+							<a href="/" class="fxt-logo"><img src="{% static 'img/theblack.png' %}" alt="Logo" style="max-width: 90px; max-height: 90px;"></a>
+							<p>Register for create an account</p>
+						</div>
+						<div class="fxt-form">
+							<form method="POST" action="{% url 'account_signup' %}">
+
+								{% csrf_token %}
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-2">
+										{% comment %} <label for="{{ field.id_for_label }}" class="form-fields">{{ field.label }}:</label> {% endcomment %}
+										{{ form.as_p }}
+									</div>
+									
+								</div>
+								{% comment %} {% for field in form %}
+									
+								{% endfor %}
+								 {% endcomment %}
+								{% comment %} <div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-3">
+										<div class="fxt-checkbox-area">
+											<div class="checkbox">
+												<input id="checkbox1" type="checkbox">
+												<label for="checkbox1">Keep me logged in</label>
+											</div>
+										</div>
+									</div>
+								</div> {% endcomment %}
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										{% if form.errors %}
+											<div class="alert alert-danger" role="alert">
+												{% for error in form.non_field_errors %}
+													{{ error }}
+												{% endfor %}
+											</div>
+										{% endif %}
+										<button type="submit" class="fxt-btn-fill">Sign up</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="fxt-style-line">
+							<div class="fxt-transformY-50 fxt-transition-delay-5">
+								<h3>Or Login With</h3>
+							</div>
+						</div>
+						<ul class="fxt-socials">
+							<li class="fxt-google">
+								<div class="fxt-transformY-50 fxt-transition-delay-6">
+									<a href="" title="google"><i class="fab fa-google-plus-g"></i><span>Google +</span></a>
+									{% comment %} {% provider_login_url 'google' method='oauth2' %} {% endcomment %}
+								</div>
+							</li>
+							<li class="fxt-twitter">
+								<div class="fxt-transformY-50 fxt-transition-delay-7">
+									<a href="#" title="twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+								</div>
+							</li>
+							<li class="fxt-facebook">
+								<div class="fxt-transformY-50 fxt-transition-delay-8">
+									<a href="#" title="Facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+								</div>
+							</li>
+						</ul>
+						<div class="fxt-footer">
+							<div class="fxt-transformY-50 fxt-transition-delay-9">
+								<p>Already have an account?<a href="{% url 'account_login'%}" class="switcher-text2 inline-text">Log in</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+{% endblock content %}

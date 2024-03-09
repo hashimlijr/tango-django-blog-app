@@ -1,0 +1,14 @@
+<!-- custom_logout_confirm.html -->
+{% extends "account/auth_base.html" %}
+
+{% block content %}
+<div class="custom-logout-content">
+    <h2>Custom Logout Confirmation Page</h2>
+    <p>Are you sure you want to sign out?</p>
+    <!-- Add your custom content here -->
+    <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Logout">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "account/auth_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-xl-6 col-lg-7 col-sm-12 col-12 fxt-bg-color">
+	<div class="fxt-content">
+		<div class="fxt-header">
+			<a href="/" class="fxt-logo"><img src="{% static 'img/theblack.png' %}" alt="Logo" style="max-width: 90px; max-height: 90px;"></a>
+			<p>Welcome to Tango!</p>
+		</div>
+		<div class="fxt-form">
+			<form method="POST" action="{% url 'account_login' %}">
+				{% csrf_token %}
+				{% for field in form %}
+					<div class="form-group">
+						<div class="fxt-transformY-50 fxt-transition-delay-2">
+							<label for="{{ field.id_for_label }}" class="form-fields">{{ field.label }}:    </label>
+							{{ field }}
+						</div>
+						
+					</div>
+				{% endfor %}
+				
+				<div class="form-group">
+					<div class="fxt-transformY-50 fxt-transition-delay-4">
+						{% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+						<button type="submit" class="fxt-btn-fill">Log in</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="fxt-style-line">
+			<div class="fxt-transformY-50 fxt-transition-delay-5">
+				<h3>Or Login With</h3>
+			</div>
+		</div>
+		<ul class="fxt-socials">
+			<li class="fxt-google">
+				<div class="fxt-transformY-50 fxt-transition-delay-6">
+					<a href="#" title="google"><i class="fab fa-google-plus-g"></i><span>Google +</span></a>
+				</div>
+			</li>
+			<li class="fxt-twitter">
+				<div class="fxt-transformY-50 fxt-transition-delay-7">
+					<a href="#" title="twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+				</div>
+			</li>
+			<li class="fxt-facebook">
+				<div class="fxt-transformY-50 fxt-transition-delay-8">
+					<a href="#" title="Facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+				</div>
+			</li>
+		</ul>
+		<div class="fxt-footer">
+			<div class="fxt-transformY-50 fxt-transition-delay-9">
+				<p>Don't have an account?<a href="{% url 'account_signup' %}" class="switcher-text2 inline-text">Register</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

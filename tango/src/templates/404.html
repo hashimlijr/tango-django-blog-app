@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block content%}
+
+<section style="background: url({% static 'img/non.png' %}); background-size: cover; background-position: center center; color: #000000;" class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <h1>404 - This Page Is Not Found. </h1><a href="/" class="hero-link">Go to Home</a>
+        </div>
+    </div>
+  </section>
+
+  {% endblock content %}
